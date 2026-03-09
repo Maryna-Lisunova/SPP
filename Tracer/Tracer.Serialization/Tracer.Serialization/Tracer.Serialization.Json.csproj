@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Tracer\Tracer.Serialization.Abstractions\Tracer.Serialization.Abstractions.csproj" />
+  </ItemGroup>
+
+    <Target Name="CopyToPlugins" AfterTargets="Build">
+        <Copy SourceFiles="$(OutputPath)$(AssemblyName).dll"
+              DestinationFolder="C:\University\SPP\Tracer\Tracer\Tracer.Example\bin\$(Configuration)\net8.0\plugins\" />
+
+        <Copy SourceFiles="$(OutputPath)Newtonsoft.Json.dll"
+              DestinationFolder="C:\University\SPP\Tracer\Tracer\Tracer.Example\bin\$(Configuration)\net8.0\plugins\"
+              Condition="Exists('$(OutputPath)Newtonsoft.Json.dll')" />
+    </Target>
+
+</Project>

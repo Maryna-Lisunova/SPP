@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35806.99
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tracer.Serialization.Json", "Tracer.Serialization\Tracer.Serialization.Json.csproj", "{11D45964-ABFC-45B1-B80C-231C565283A4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tracer.Serialization.Yaml", "Tracer.Serialization.Yaml\Tracer.Serialization.Yaml.csproj", "{A535EA46-7B93-4D30-BB98-DFB2EF1C9850}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tracer.Serialization.Xml", "Tracer.Serialization.Xml\Tracer.Serialization.Xml.csproj", "{8716EC12-CF9E-428D-A543-07DB3EBC6336}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tracer.Serialization.Abstractions", "..\Tracer\Tracer.Serialization.Abstractions\Tracer.Serialization.Abstractions.csproj", "{E53953AF-4B25-6694-D47B-10DD686D5E33}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{11D45964-ABFC-45B1-B80C-231C565283A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11D45964-ABFC-45B1-B80C-231C565283A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11D45964-ABFC-45B1-B80C-231C565283A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11D45964-ABFC-45B1-B80C-231C565283A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A535EA46-7B93-4D30-BB98-DFB2EF1C9850}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A535EA46-7B93-4D30-BB98-DFB2EF1C9850}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A535EA46-7B93-4D30-BB98-DFB2EF1C9850}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A535EA46-7B93-4D30-BB98-DFB2EF1C9850}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8716EC12-CF9E-428D-A543-07DB3EBC6336}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8716EC12-CF9E-428D-A543-07DB3EBC6336}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8716EC12-CF9E-428D-A543-07DB3EBC6336}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8716EC12-CF9E-428D-A543-07DB3EBC6336}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E53953AF-4B25-6694-D47B-10DD686D5E33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E53953AF-4B25-6694-D47B-10DD686D5E33}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E53953AF-4B25-6694-D47B-10DD686D5E33}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E53953AF-4B25-6694-D47B-10DD686D5E33}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7AB41170-A7B0-4D0B-8C14-2263474A5890}
+	EndGlobalSection
+EndGlobal

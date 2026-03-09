@@ -1,0 +1,74 @@
+# IDE - Visual Studio
+.vs/
+.idea/
+*.user
+*.userosscache
+*.suo
+*.userprefs
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+build/
+bld/
+[Bb]in/
+[Oo]bj/
+[Oo]ut/
+
+# NuGet Packages
+packages/
+*.nupkg
+project.lock.json
+project.assets.json
+*.nuget.props
+*.nuget.targets
+
+# Test Results
+TestResults/
+*.trx
+*.cache
+*.cr
+*.testlog
+
+# Logs and databases
+*.log
+*.sqlite
+*.db
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build generated files
+*.dll
+*.exe
+*.pdb
+*.lib
+*.so
+*.dylib
+
+# Benchmark results
+BenchmarkDotNet.Artifacts/
+
+# Publish output
+publish/
+*.publish.xml
+
+# VS Code
+.vscode/
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
