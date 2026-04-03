@@ -9,9 +9,8 @@ namespace Tracer.Core
     public class ThreadTrace
     {
         public int ThreadId { get; }
-        public long TotalTime { get; }
+        public long TotalTime { get; } // общ время корневых методов
         public IReadOnlyList<MethodTrace> Methods { get; }
-
         public ThreadTrace(int threadId, long totalTime, List<MethodTrace> methods)
         {
             ThreadId = threadId;

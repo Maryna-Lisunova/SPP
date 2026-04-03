@@ -19,7 +19,7 @@ namespace Tracer.Example
         public void InnerMethod()
         {
             _tracer.StartTrace();
-            Thread.Sleep(50);
+            Thread.Sleep(60);
             _tracer.StopTrace();
         }
     }

@@ -25,7 +25,7 @@ namespace Tracer.Core.Tests
 
         [Test]
         public void NestedMethods_ShouldBeRecordedCorrectly()
-        {
+        { // вложенные 
             var tracer = new MyTracer();
 
             tracer.StartTrace();
@@ -73,6 +73,7 @@ namespace Tracer.Core.Tests
             }
 
             var result = tracer.GetTraceResult();
+            // главный поток не вызывал StartTrace, поэтому должно быть только threadCount потоков
             Assert.That(result.Threads.Count, Is.EqualTo(threadCount));
         }
 

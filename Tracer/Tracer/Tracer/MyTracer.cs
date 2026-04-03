@@ -9,7 +9,7 @@ using System.Diagnostics;
 namespace Tracer.Core
 {
     public class MyTracer : ITracer
-    {
+    { // собирает информацию о методах с учетом вложенности и многопоточности
         private class MethodTraceInternal
         {
             public string MethodName;
@@ -21,27 +21,28 @@ namespace Tracer.Core
 
         private class ThreadTraceInternal
         {
-            public Stack<MethodTraceInternal> ActiveTraces = new();
-            public List<MethodTraceInternal> RootMethods = new();
+            public Stack<MethodTraceInternal> ActiveTraces = new(); // стек актив методов
+            public List<MethodTraceInternal> RootMethods = new(); // заверш
         }
 
-        private readonly ConcurrentDictionary<int, ThreadTraceInternal> _threadsTracerInfo = new();
+        private readonly ConcurrentDictionary<int, ThreadTraceInternal> _threadsTracerInfo = new(); // потокобезопасный словарь
 
         public void StartTrace()
         {
             int threadId = Thread.CurrentThread.ManagedThreadId;
             var thread = _threadsTracerInfo.GetOrAdd(threadId, (key) => new ThreadTraceInternal());
+            // короткая запись - лямбда функция
             var frame = new StackTrace().GetFrame(1);
             var method = frame.GetMethod();
 
-            var trace = new MethodTraceInternal
+            var trace = new MethodTraceInternal // точка входа в вызов
             {
                 MethodName = method.Name,
                 ClassName = method.DeclaringType.Name,
                 Stopwatch = Stopwatch.StartNew()
             };
 
-            if (thread.ActiveTraces.Count > 0)
+            if (thread.ActiveTraces.Count > 0) // актив методс?
                 thread.ActiveTraces.Peek().Children.Add(trace);
             else
                 thread.RootMethods.Add(trace);
@@ -61,9 +62,11 @@ namespace Tracer.Core
             var trace = thread.ActiveTraces.Pop();
             trace.Stopwatch.Stop();
 
+            // если это не корневой метод, обновляем время родительского метода
             if (thread.ActiveTraces.Count > 0)
             {
                 var parent = thread.ActiveTraces.Peek();
+                // время родителя уже учитывается через Stopwatch
             }
         }
 
@@ -83,10 +86,12 @@ namespace Tracer.Core
                 {
                     var converted = Convert(m);
                     methods.Add(converted);
-                    totalTime += converted.Time;
+                    totalTime += converted.Time; // дочернеее входит в рутовое
                 }
+
                 result[threadId] = new ThreadTrace(threadId, totalTime, methods);
             }
+
             return new TraceResult(result);
         }
 
@@ -97,6 +102,7 @@ namespace Tracer.Core
             {
                 children.Add(Convert(c));
             }
+
             return new MethodTrace(m.MethodName, m.ClassName, m.Stopwatch.ElapsedMilliseconds, children);
         }
     }

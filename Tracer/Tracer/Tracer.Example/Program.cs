@@ -16,7 +16,7 @@ internal class Program
 
         Thread t1 = new Thread(() => foo.MyMethod());
         Thread t2 = new Thread(() => foo.MyMethod());
-        Thread t3 = new Thread(() => foo.MyMethod());
+        Thread t3 = new Thread(() => { foo.MyMethod(); foo.MyMethod(); }); 
 
         t1.Start();
         t2.Start();
