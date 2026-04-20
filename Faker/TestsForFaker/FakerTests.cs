@@ -62,6 +62,38 @@ namespace TestsForFaker
         }
 
         [Fact]
+        public void Create_CustomStruct_ShouldBePopulated()
+        {
+            var result = _faker.Create<CustomStruct>();
+            Assert.NotEqual(0, result.X);
+            Assert.False(string.IsNullOrEmpty(result.Name));
+        }
+
+        [Fact]
+        public void Config_CustomGenerator_ShouldBeUsedForProperties()
+        {
+            var config = new FakerConfig();
+            config.Add<Dog, string, ConstantNameGenerator>(d => d.Name);
+            var fakerWithConfig = new Faker.Faker(config);
+
+            var dog = fakerWithConfig.Create<Dog>();
+
+            Assert.Equal("Rex", dog.Name);
+        }
+
+        [Fact]
+        public void Config_CustomGenerator_ShouldWorkForPublicFields()
+        {
+            var config = new FakerConfig();
+            config.Add<FieldClass, string, ConstantNameGenerator>(f => f.PublicField);
+            var fakerWithConfig = new Faker.Faker(config);
+
+            var result = fakerWithConfig.Create<FieldClass>();
+
+            Assert.Equal("Rex", result.PublicField);
+        }
+
+        [Fact]
         public void Create_ListWithComplexObjects_ShouldPopulateCorrectly()
         {
             var dogs = _faker.Create<List<Dog>>();
@@ -98,15 +130,7 @@ namespace TestsForFaker
             var result = _faker.Create<FallbackCtorClass>();
             Assert.NotNull(result);
             Assert.False(string.IsNullOrEmpty(result.Value));
-        }
-
-        [Fact]
-        public void Create_CustomStruct_ShouldBePopulated()
-        {
-            var result = _faker.Create<CustomStruct>();
-            Assert.NotEqual(0, result.X);
-            Assert.False(string.IsNullOrEmpty(result.Name));
-        }
+        }        
 
         [Fact]
         public void Create_RecursiveCircularDependency_ShouldBreakCycleWithNull()
@@ -125,30 +149,6 @@ namespace TestsForFaker
             Assert.NotNull(person.Home);
             Assert.NotNull(person.Office);
             Assert.NotSame(person.Home, person.Office);
-        }
-
-        [Fact]
-        public void Config_CustomGenerator_ShouldBeUsedForProperties()
-        {
-            var config = new FakerConfig();
-            config.Add<Dog, string, ConstantNameGenerator>(d => d.Name);
-            var fakerWithConfig = new Faker.Faker(config);
-
-            var dog = fakerWithConfig.Create<Dog>();
-
-            Assert.Equal("Rex", dog.Name);
-        }
-
-        [Fact]
-        public void Config_CustomGenerator_ShouldWorkForPublicFields()
-        {
-            var config = new FakerConfig();
-            config.Add<FieldClass, string, ConstantNameGenerator>(f => f.PublicField);
-            var fakerWithConfig = new Faker.Faker(config);
-
-            var result = fakerWithConfig.Create<FieldClass>();
-
-            Assert.Equal("Rex", result.PublicField);
-        }
+        }                
     }
 }

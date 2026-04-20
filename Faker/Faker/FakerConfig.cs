@@ -14,8 +14,12 @@ namespace Faker
         public void Add<TTarget, TMember, TGenerator>(Expression<Func<TTarget, TMember>> expression)
             where TGenerator : IValueGenerator, new()
         {
+            // является ли тело лямбды (Body) прямым обращением к члену класса (Member)
             if (expression.Body is not MemberExpression memberExpression)
             {
+                // когда .NET неявно обернул поле в другую операцию
+                // самый частый случай — UnaryExpression (унарная операция, например, Convert)
+                // А то, над чем эта операция совершается (операнд), является обращением к полю?» (unary.Operand is MemberExpression innerMember)
                 if (expression.Body is UnaryExpression unary && unary.Operand is MemberExpression innerMember)
                 {
                     memberExpression = innerMember;
